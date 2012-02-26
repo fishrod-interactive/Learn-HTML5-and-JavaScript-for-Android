@@ -5,7 +5,7 @@
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; target-densitydpi=device-dpi;"/>
-		<title>Standard Paging</title>
+		<title>Single Page Container</title>
 		<link rel="stylesheet" type="text/css" href="css/mobile.css" />
 	</head>	
 
@@ -17,33 +17,7 @@
 				
 				<h1>Page 1</h1>
 				<a data-method="push" href="#card-second-page">Page 2</a>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dapibus turpis vel interdum. Sed eget tortor a eros gravida sagittis. Maecenas dapibus ligula non orci auctor ac porta quam placerat. Quisque et gravida nisi. Suspendisse pharetra molestie consectetur. Nulla consequat semper vestibulum. Sed fringilla est in sem congue ac tristique justo elementum. Suspendisse sit amet augue egestas mi iaculis faucibus. Curabitur consequat mauris at est bibendum a vestibulum leo consequat. Sed imperdiet vulputate pellentesque. Morbi at odio lorem, nec tristique lacus. Nullam eros lacus, vulputate non bibendum in, ultrices et felis. Sed accumsan condimentum metus. Nulla in felis sem, eget laoreet enim. Fusce sed erat velit.
-					</p>
-					<p>
-					Fusce molestie metus vel arcu suscipit vel ullamcorper lorem pharetra. Nam eu felis non mauris adipiscing gravida sed id mauris. Vestibulum adipiscing odio sodales justo auctor hendrerit. Phasellus eget massa eleifend tortor fringilla ullamcorper. Nam sit amet turpis eget lorem dignissim consequat. Etiam dictum tellus risus, nec bibendum mi. Pellentesque bibendum, augue non consequat iaculis, lorem sapien tempus justo, ut lobortis nisi enim id lacus. Maecenas porttitor ornare quam eu sodales. Sed pharetra sapien at arcu vehicula iaculis. Proin vel est a arcu posuere adipiscing ac ut felis. Duis nec nisi vitae magna sollicitudin auctor ac vel odio. Vivamus non lorem id dolor mollis interdum sit amet id lorem. Pellentesque eget quam id enim gravida iaculis. Praesent elementum tempus nibh, vel accumsan ligula auctor non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla fermentum lacus pharetra lacus pretium facilisis.
-					</p>
-					<p>
-					Mauris id dolor eget sapien convallis suscipit. Ut consequat, tortor ut aliquam semper, mi risus imperdiet tellus, sed posuere metus nibh eu odio. Fusce tincidunt lorem a dolor vulputate gravida. Donec ac diam ac nibh faucibus tincidunt in in ligula. Integer placerat lacinia tristique. In ut libero nunc. Proin sem justo, lobortis a adipiscing vulputate, cursus at est. In vel orci lacus, fermentum placerat lacus. Nunc dictum aliquam orci, sit amet mollis mi faucibus ut. Ut varius, purus eu tincidunt accumsan, massa ligula commodo lectus, quis varius dolor erat consequat justo. Quisque condimentum dolor vitae odio bibendum id dapibus neque iaculis. Suspendisse ullamcorper diam et justo malesuada pretium. In hac habitasse platea dictumst.
-					</p>
-					<p>
-					Quisque et leo in dui fringilla aliquet. Integer ac ante sem, ut hendrerit mi. Nam pretium mi vitae felis ultrices faucibus. Pellentesque sed mauris enim, eget scelerisque diam. Vestibulum iaculis iaculis justo a sodales. Sed accumsan feugiat facilisis. Donec mattis, turpis vel suscipit ultricies, purus turpis dignissim nisl, non condimentum magna nibh luctus enim. Quisque non convallis odio. Phasellus nec eros urna. Sed at felis leo. Nullam nec turpis massa.
-					</p>
-					<p>
-					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
-					</p>
-					<p>
-					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
-					</p>
-					<p>
-					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
-					</p>
-					<p>
-					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
-					</p>
-					<p>
-					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
-					</p>
+	
 			</section>
 			
 			<section class="card" id="card-second-page">
@@ -77,7 +51,7 @@
 			
 			[].forEach.call(document.querySelectorAll('.card a[data-method="push"]'), function(el){
 				el.addEventListener("click", function pushCard(event){
-					var pageid = event.target.hash;
+					var pageid = this.href.hash;
 					goToCard(pageid);
 					event.preventDefault();
 				});
