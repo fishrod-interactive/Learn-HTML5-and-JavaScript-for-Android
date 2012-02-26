@@ -13,14 +13,14 @@
 		
 		<div id="deck">
 			
-			<section class="card active" id="card-index">
+			<section class="card" id="card-index">
 				
 				<h1>Page 1</h1>
 				<a data-method="push" href="#card-second-page">Page 2</a>
 								
 			</section>
 			
-			<section class="card" id="card-second-page">
+			<section class="card active" id="card-second-page">
 				
 				<h1>Page 2</h1>
 				<a data-method="push" href="#card-third-page">Page 3</a>
@@ -38,7 +38,7 @@
 		
 		<script>
 			
-			[].forEach.call(document.querySelectorAll('.card a[data-method="push"]'), function(el){
+			[].forEach.call(document.querySelectorAll('a[data-method="push"]'), function(el){
 				el.addEventListener("click", function pushCard(event){
 					var pageid = event.target.hash;
 					goToCard(pageid);
@@ -46,7 +46,7 @@
 				});
 			});
 			
-			function goToCard(to){
+			function goToCard(to){	
 				document.querySelectorAll('.card.active')[0].classList.remove('active');
 				document.querySelectorAll(to)[0].classList.add('active');
 			}
