@@ -5,7 +5,7 @@
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; target-densitydpi=device-dpi;"/>
-		<title>Standard Paging</title>
+		<title>Single Page Container</title>
 		<link rel="stylesheet" type="text/css" href="css/mobile.css" />
 	</head>	
 
@@ -17,14 +17,25 @@
 				
 				<h1>Page 1</h1>
 				<a data-method="push" href="#card-second-page">Page 2</a>
-								
+	
 			</section>
 			
 			<section class="card active" id="card-second-page">
 				
 				<h1>Page 2</h1>
 				<a data-method="push" href="#card-third-page">Page 3</a>
-				
+				<p>
+					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
+					</p>
+					<p>
+					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
+					</p>
+					<p>
+					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
+					</p>
+					<p>
+					Donec ut odio neque. Fusce ornare arcu non odio adipiscing pharetra. Nam vitae augue ligula. Vivamus a ipsum id metus gravida ullamcorper non vel justo. Pellentesque sed massa ipsum, quis volutpat tellus. Sed fringilla adipiscing ultrices. Praesent congue luctus luctus.
+					</p>
 			</section>
 			
 			<section class="card" id="card-third-page">
@@ -40,7 +51,7 @@
 			
 			[].forEach.call(document.querySelectorAll('a[data-method="push"]'), function(el){
 				el.addEventListener("click", function pushCard(event){
-					var pageid = event.target.hash;
+					var pageid = this.href.hash;
 					goToCard(pageid);
 					event.preventDefault();
 				});
