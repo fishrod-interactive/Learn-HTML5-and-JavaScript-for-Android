@@ -1,0 +1,34 @@
+body, html, #shoe, .deck {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0px;
+}
+
+header#taskbar {
+  height: 3em;
+  background: #CCCCCC;
+  color: #FFFFFF;
+  
+  h1.branding {
+    margin: 0px;
+  }
+  
+}
+
+
+.deck {
+ 
+  .card {
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    overflow: auto;
+    position: absolute;
+  }
+  
+  .card.active {
+    left: 0px;
+  }
+
+}

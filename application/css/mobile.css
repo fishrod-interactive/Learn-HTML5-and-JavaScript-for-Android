@@ -1,0 +1,25 @@
+body {
+  font-size: 0.75em;
+  font-family: Arial, Helvetica, sans-serif; }
+
+body, html, #shoe, .deck {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0px; }
+
+header#taskbar {
+  height: 3em;
+  background: #CCCCCC;
+  color: #FFFFFF; }
+  header#taskbar h1.branding {
+    margin: 0px; }
+
+.deck .card {
+  height: 100%;
+  width: 100%;
+  left: -100%;
+  overflow: auto;
+  position: absolute; }
+.deck .card.active {
+  left: 0px; }

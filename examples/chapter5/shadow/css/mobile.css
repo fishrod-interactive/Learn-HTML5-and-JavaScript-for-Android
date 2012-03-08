@@ -1,0 +1,21 @@
+body {
+	margin: 0px;
+}
+
+.left, .right {
+	font-family: Condiment;
+	font-weight: bold;
+	font-size: 70px;
+	width: 50%;
+	float: left;
+	text-align: center;
+	padding-top: 90px;
+}
+
+.left {
+	
+}
+
+.right {
+	
+}
