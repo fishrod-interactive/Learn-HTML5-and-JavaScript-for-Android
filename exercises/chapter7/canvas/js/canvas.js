@@ -2,18 +2,20 @@ var app = app || {};
 
 app.playButton = function(id, track){
 	
-	var canvas = document.getElementById(id);
-	var	context = canvas.getContext('2d'),
-		center = {
-			x: (canvas.offsetHeight / 2),
-			y: (canvas.offsetHeight / 2)
-		},
-		dimensions = {
-			width: (canvas.offsetWidth),
-			height: (canvas.offsetHeight)
-		},
+	var canvas = document.getElementById(id),
+		context = canvas.getContext('2d'),
 		track = track,
 		_self = this;
+		
+	canvas.center = {
+			x: (canvas.offsetHeight / 2),
+			y: (canvas.offsetHeight / 2)
+	};
+	
+	canvas.dimensions = {
+			width: (canvas.offsetWidth),
+			height: (canvas.offsetHeight)
+	};
 	
 	/**
 	 * Track callback methods
@@ -32,7 +34,7 @@ app.playButton = function(id, track){
 	
 	this.togglePlay = function(){
 		
-		switch(track.getCurrentState()){
+		switch(track.getState()){
 			case track.state.STOPPED:
 			case track.state.PAUSED:
 				_self.play();
@@ -55,23 +57,24 @@ app.playButton = function(id, track){
 	this.drawStop = function(){
 		var width = 20,
 			height = 20,
-			x = (dimensions.width / 2) - (width / 2),
-			y = (dimensions.height / 2) - (height / 2);
+			x = canvas.center.x - (width / 2),
+			y = canvas.center.y - (height / 2);
 			
 		context.beginPath();
-		context.rect(x, y, width, height);
 		context.fillStyle = '#A0A0A0';
-		context.fill();
+		context.fillRect(x, y, width, height);
+
 	};
 	
 	this.drawPlay = function(){
 		var width = 20,
 			height = 20,
-			x = ((dimensions.width / 2) + 2) - (width / 2),
-			y = (dimensions.height / 2) - (height / 2);
+			x = canvas.center.x - (width / 2),
+			y = canvas.center.y - (height / 2);
+			
 		context.beginPath();
 		context.moveTo(x, y);
-		context.lineTo(x + width, (dimensions.height / 2));
+		context.lineTo(x + width, canvas.center.y);
 		context.lineTo(x, (y + height))
 		context.fillStyle = '#A0A0A0';
 		context.fill();
@@ -83,27 +86,27 @@ app.playButton = function(id, track){
 		var percentage = 100 - ((track.getCurrentTime() / track.getLength()) * 100);
 		var endDegree = percentage * (2 / 100);
 		
-		context.clearRect(0, 0, dimensions.width, dimensions.height);
+		context.clearRect(0, 0, canvas.dimensions.width, canvas.dimensions.height);
 		
 		context.beginPath();
-		context.arc(center.x, center.y, (dimensions.height / 2) - 10, 0, 2 * Math.PI, false);
+		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 10, 0, 2 * Math.PI, false);
 		context.closePath();
 		context.fillStyle = '#000000';
 		context.fill();
 		
 		context.beginPath();
-		context.arc(center.x, center.y, (dimensions.height / 2) - 20, 0, 2 * Math.PI, false);
+		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 20, 0, 2 * Math.PI, false);
 		context.lineWidth = 5;
 		context.strokeStyle = "#FFFFFF";
 		context.stroke();
 		
 		context.beginPath();
-		context.arc(center.x, center.y, (dimensions.height / 2) - 20, 0 * Math.PI, endDegree * Math.PI, false);
+		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 20, 0 * Math.PI, endDegree * Math.PI, false);
 		context.lineWidth = 5;
 		context.strokeStyle = "#A8A8A8";
 		context.stroke();
 
-		switch(track.getCurrentState()){
+		switch(track.getState()){
 			case track.state.PAUSED:
 			case track.state.STOPPED:
 				this.drawPlay();
@@ -133,56 +136,53 @@ app.track = function(length){
 		state = this.state.STOPPED,
 		updateInterval = 1000 / 30;
 	
+	var setCurrentTime = function(time){
+		currentTime = time;
+		_self.callbacks.didUpdateTime.call(_self, currentTime);
+	};
+	
 	var updateTime = function(){
 		
 		if(currentTime < length){
-			_self.setCurrentTime(currentTime + updateInterval);
+			setCurrentTime(currentTime + updateInterval);
 		} else {
 			_self.stop();
 		}
 				
 	};
-	
-	this.getCurrentState = function(){
-		return state;
+
+	this.getCurrentTime = function(){
+		return currentTime;
 	};
 	
-	this.setCurrentTime = function(time){
-		currentTime = time;
-		_self.callbacks.didUpdateTime.call(_self, currentTime);
+		
+	this.getLength = function(){
+		return length;
 	};
 	
 	this.getState = function(){
-		return this.currentState;
+		return state;
 	};
 	
 	this.stop = function(){
 		window.clearInterval(interval);
-		state = this.state.STOPPED;
-		this.setCurrentTime(0);
-		this.callbacks.didStop.call(this);
+		state = _self.state.STOPPED;
+		_self.setCurrentTime(0);
+		_self.callbacks.didStop.call(_self);
 	};
 		
 	this.play = function(){
-		if(state != this.state.PLAYING){
+		if(state != _self.state.PLAYING){
 			interval = window.setInterval(updateTime, updateInterval);
-			state = this.state.PLAYING;
-			this.callbacks.didStartPlaying.call(this);
+			state = _self.state.PLAYING;
+			_self.callbacks.didStartPlaying.call(_self);
 		}
 	};
 	
 	this.pause = function(){
 		window.clearInterval(interval);
-		state = this.state.PAUSED;
-		this.callbacks.didPause.call(this);
-	};
-	
-	this.getLength = function(){
-		return length;
-	};
-	
-	this.getCurrentTime = function(){
-		return currentTime;
+		state = _self.state.PAUSED;
+		_self.callbacks.didPause.call(_self);
 	};
 
 	this.callbacks = {
