@@ -29,10 +29,6 @@
 		<script>
 			var track = new app.track(240);
 			var playButton = new app.playButton('play', track);
-			document.getElementById('play').addEventListener('click', function(){
-				document.getElementById('audio').play();
-				playButton.togglePlay();
-			});
 			
 			document.getElementById('audio').addEventListener('timeupdate', function(e){
 		

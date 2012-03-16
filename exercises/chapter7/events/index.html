@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; target-densitydpi=device-dpi;"/>
+		<title>Canvas</title>
+		<style type="text/css" media="screen">
+		
+			body, html {
+				margin: 0;
+				height: 100%;
+				width: 100%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="touch-plane" style="width: 100%; height: 100%; background: #000000; color: #FFFFFF;"><span id="coordinates">x: 0 y: 0</span> - <span id="touching">not touching</span></div>
+
+		<script>
+			document.getElementById('touch-plane').addEventListener('touchmove', function(e){
+				document.getElementById('coordinates').innerText = 'x: ' + e.touches[0].clientX + ' y: ' + e.touches[0].clientY;
+				e.preventDefault();
+			});
+			
+			document.getElementById('touch-plane').addEventListener('touchstart', function(e){
+				document.getElementById('touching').innerText = 'touching';
+			});
+			
+			document.getElementById('touch-plane').addEventListener('touchend', function(e){
+				document.getElementById('touching').innerText = 'not touching';
+			});
+		</script>
+	</body>
+</html>

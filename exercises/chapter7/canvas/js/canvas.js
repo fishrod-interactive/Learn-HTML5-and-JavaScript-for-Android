@@ -74,34 +74,35 @@ app.playButton = function(id, track){
 			
 		context.beginPath();
 		context.moveTo(x, y);
-		context.lineTo(x + width, canvas.center.y);
+		context.lineTo(x + width, y + (height / 2));
 		context.lineTo(x, (y + height))
 		context.fillStyle = '#A0A0A0';
+		
 		context.fill();
+
 	};
 	
 	this.draw = function(){
 		// Draw the progress bar based on the
 		// current time and total time of the track
 		var percentage = 100 - ((track.getCurrentTime() / track.getLength()) * 100);
-		var endDegree = percentage * (2 / 100);
+		var endradians = (percentage * (2 / 100)) * Math.PI;
 		
 		context.clearRect(0, 0, canvas.dimensions.width, canvas.dimensions.height);
 		
 		context.beginPath();
-		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 10, 0, 2 * Math.PI, false);
-		context.closePath();
 		context.fillStyle = '#000000';
+		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 10, 0, 2 * Math.PI);
 		context.fill();
 		
 		context.beginPath();
-		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 20, 0, 2 * Math.PI, false);
+		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 20, 0, 2 * Math.PI);
 		context.lineWidth = 5;
 		context.strokeStyle = "#FFFFFF";
 		context.stroke();
 		
 		context.beginPath();
-		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 20, 0 * Math.PI, endDegree * Math.PI, false);
+		context.arc(canvas.center.x, canvas.center.y, canvas.center.x - 20, 0, endradians);
 		context.lineWidth = 5;
 		context.strokeStyle = "#A8A8A8";
 		context.stroke();
@@ -117,6 +118,11 @@ app.playButton = function(id, track){
 		}
 		
 	};
+	
+	canvas.addEventListener('touchend', function(e){
+		_self.togglePlay();
+		e.preventDefault();
+	});
 	
 	this.draw();
 };
