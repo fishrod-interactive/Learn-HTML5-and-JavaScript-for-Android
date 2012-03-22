@@ -8,18 +8,60 @@ body, html, #shoe, .deck {
   overflow: hidden;
   margin: 0px; }
 
+/**
+ *   Header taskbar styles
+ */
 header#taskbar {
-  height: 3em;
   background: #CCCCCC;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  overflow: hidden;
+  position: static;
+  top: 0;
+  left: 0;
+  padding: 10px 5px; }
   header#taskbar h1.branding {
-    margin: 0px; }
+    margin: 0px;
+    float: left;
+    width: 71px;
+    height: 100%;
+    text-indent: -10000px;
+    overflow: hidden;
+    border: 1px solid red; }
+  header#taskbar form#add-movie {
+    float: right; }
 
 .deck .card {
-  height: 100%;
+  height: inherit;
   width: 100%;
   left: -100%;
   overflow: auto;
   position: absolute; }
 .deck .card.active {
   left: 0px; }
+
+.list {
+  margin: 0;
+  padding: 0; }
+
+.video-list li {
+  clear: both;
+  overflow: hidden;
+  height: 100px;
+  display: block; }
+  .video-list li .teaser {
+    float: left;
+    margin: 0 10px 0 0; }
+  .video-list li .more {
+    display: block;
+    height: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    .video-list li .more h2 {
+      margin: 0; }
+
+input[type="text"] {
+  border: 1px solid #000000;
+  padding: 5px; }
+
+input[type="submit"] {
+  padding: 5px; }

@@ -5,14 +5,32 @@ body, html, #shoe, .deck {
   margin: 0px;
 }
 
+/**
+ *   Header taskbar styles
+ */
+
 header#taskbar {
-  height: 3em;
   background: #CCCCCC;
   color: #FFFFFF;
+  overflow: hidden;
+  position: static;
+  top: 0;
+  left: 0;
+  padding: 10px 5px;
   
   h1.branding {
     margin: 0px;
+    float: left;
+    width: 71px;
+    height: 100%;
+    text-indent: -10000px;
+    overflow: hidden;
+    border: 1px solid red;
   }
+  
+  form#add-movie {
+    float: right;
+  }  
   
 }
 
@@ -20,7 +38,7 @@ header#taskbar {
 .deck {
  
   .card {
-    height: 100%;
+    height: inherit;
     width: 100%;
     left: -100%;
     overflow: auto;
@@ -31,4 +49,37 @@ header#taskbar {
     left: 0px;
   }
 
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.video-list {
+  li {
+    
+    clear: both;
+    overflow: hidden;
+    height: 100px;
+    display: block;
+    
+    .teaser {
+      float: left;
+      margin: 0 10px 0 0;
+    }
+    
+    .more {
+ 
+      display: block;
+      height: 90px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      h2 {
+        margin: 0;
+      }
+      
+    }
+  }
 }

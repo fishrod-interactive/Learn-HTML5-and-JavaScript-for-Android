@@ -1,5 +1,5 @@
 body {
-	margin: 0px;
+
 }
 
 .left, .right {
@@ -10,12 +10,13 @@ body {
 	float: left;
 	text-align: center;
 	padding-top: 90px;
+	color: #CCCCCC;
 }
 
-.left {
-	
+.shadow {
+	text-shadow: 3px 3px 10px #000000;
 }
 
-.right {
-	
+.stroke {
+	-webkit-text-stroke: 1px #000000;
 }
