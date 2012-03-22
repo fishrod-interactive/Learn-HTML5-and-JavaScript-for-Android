@@ -13,10 +13,9 @@ header#taskbar {
   background: #CCCCCC;
   color: #FFFFFF;
   overflow: hidden;
-  position: static;
   top: 0;
   left: 0;
-  padding: 10px 5px;
+  padding: 10px;
   
   h1.branding {
     margin: 0px;
@@ -26,16 +25,14 @@ header#taskbar {
     text-indent: -10000px;
     overflow: hidden;
     border: 1px solid red;
-  }
-  
-  form#add-movie {
-    float: right;
-  }  
+  } 
   
 }
 
 
 .deck {
+ 
+  position: relative;
  
   .card {
     height: inherit;
@@ -57,8 +54,10 @@ header#taskbar {
 }
 
 .video-list {
+  
   li {
     
+    padding: 10px;
     clear: both;
     overflow: hidden;
     height: 100px;
@@ -77,6 +76,10 @@ header#taskbar {
       text-overflow: ellipsis;
       
       h2 {
+        margin: 0 0 10px;
+      }
+      
+      p {
         margin: 0;
       }
       

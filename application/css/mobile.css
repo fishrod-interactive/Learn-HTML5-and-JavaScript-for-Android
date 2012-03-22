@@ -15,10 +15,9 @@ header#taskbar {
   background: #CCCCCC;
   color: #FFFFFF;
   overflow: hidden;
-  position: static;
   top: 0;
   left: 0;
-  padding: 10px 5px; }
+  padding: 10px; }
   header#taskbar h1.branding {
     margin: 0px;
     float: left;
@@ -27,23 +26,24 @@ header#taskbar {
     text-indent: -10000px;
     overflow: hidden;
     border: 1px solid red; }
-  header#taskbar form#add-movie {
-    float: right; }
 
-.deck .card {
-  height: inherit;
-  width: 100%;
-  left: -100%;
-  overflow: auto;
-  position: absolute; }
-.deck .card.active {
-  left: 0px; }
+.deck {
+  position: relative; }
+  .deck .card {
+    height: inherit;
+    width: 100%;
+    left: -100%;
+    overflow: auto;
+    position: absolute; }
+  .deck .card.active {
+    left: 0px; }
 
 .list {
   margin: 0;
   padding: 0; }
 
 .video-list li {
+  padding: 10px;
   clear: both;
   overflow: hidden;
   height: 100px;
@@ -57,11 +57,24 @@ header#taskbar {
     overflow: hidden;
     text-overflow: ellipsis; }
     .video-list li .more h2 {
+      margin: 0 0 10px; }
+    .video-list li .more p {
       margin: 0; }
+
+input, select, textarea, button {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 input[type="text"] {
   border: 1px solid #000000;
-  padding: 5px; }
+  padding: 10px; }
 
 input[type="submit"] {
-  padding: 5px; }
+  padding: 10px; }
+
+input.full-width {
+  width: 100%; }
+
+form#add-movie {
+  margin-left: 80px; }
