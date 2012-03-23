@@ -18,7 +18,7 @@ app.utilities.paging = (function(){
 		}
 		
 		if(target){
-				
+			
 		}
 		
 		event.preventDefault();
