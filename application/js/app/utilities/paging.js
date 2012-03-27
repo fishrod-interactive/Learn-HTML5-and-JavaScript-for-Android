@@ -8,7 +8,7 @@ app.utilities.paging = (function(){
 
 		var target = event.target;
 				
-		while(target.nodeName !== "A" && target.getAttribute('data-method') !== "push"){
+		while(target.nodeName !== "A" && target.getAttribute('data-paging-method') !== "push"){
 			// We've reached the body element break!
 			if(target.parentNode.nodeName == 'HTML'){
 				target = null;
@@ -40,7 +40,9 @@ app.utilities.paging = (function(){
 			*/
 	
 	return {
-				
+		goToCard: function goToCard(path){
+			
+		}	
 	}
 	
 })();
