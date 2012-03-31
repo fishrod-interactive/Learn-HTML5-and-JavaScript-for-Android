@@ -27,27 +27,35 @@ app.controller.movies.search = function(searchfield){
 			 */
 			
 			// var src = "http://api.themoviedb.org/2.1/Movie.search/en/json/bbe8939bdc4d7d35197a12af12b258d8/" + query;
-			var src = "http://api.themoviedb.org/3/search/movie?callback=app.bootstrap.getController('movies.search').showResults&api_key=0bd115e829f1c55f49024251d6b71021c23087a4&query=" + query;
+			
+
+			
+			var src = "http://api.themoviedb.org/3/search/movie?api_key=bbe8939bdc4d7d35197a12af12b258d8&query=" + query;
+			
+			var request = new XMLHttpRequest();
+			request.open('GET', src, true);
+			request.setRequestHeader('Accept', 'application/json');
+			request.send();
 			
 			/**
 			 * Create a new script tag
 			 */
-			var script = document.createElement('script');
+			// var script = document.createElement('script');
 			
 			/**
 			 * Set the source of the script element to be the same as the on specified above
 			 */
-			script.src = src;
-			script.async = "async";
-						
+			// script.src = src;
+			// script.async = "async";
+			/*			
 			script.onreadystatechange = function(){
 				console.log(arguments);
-			}
+			}*/
 			
 			/**
 			 * Embed the script
 			 */
-			document.head.appendChild(script);
+			//document.head.appendChild(script);
 		}
 		
 	}

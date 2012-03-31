@@ -6,10 +6,7 @@ app.bootstrap = (function(){
 		movies: {
 			search: null
 		}
-	},
-	view = {},
-	model = {};
-
+	};
 	controller.movies.search = new app.controller.movies.search('#add-movie input[name="query"]');
 
 	return {
