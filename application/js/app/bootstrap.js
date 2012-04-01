@@ -2,13 +2,12 @@ var app = app || {};
 
 app.bootstrap = (function(){
 
-	var controller = {
+	var _controller = {
 		movies: {
 			search: null
 		}
-	};
-	controller.movies.search = new app.controller.movies.search('#add-movie input[name="query"]');
-
+	}
+	
 	return {
 		getController: function(name){
 			
@@ -16,13 +15,16 @@ app.bootstrap = (function(){
 			var returnController = null;
 			
 			if(parts.length > 0){
-				returnController = controller;
+				returnController = _controller;
 				for(var i = 0; i < parts.length; i++){
 					returnController = returnController[parts[i]];
 				}
 			}
 			
 			return returnController;
+		},
+		initScripts: function(){
+			_controller.movies.search = new app.controller.movies.search('#add-movie input[name="query"]');
 		}
 	}
 	

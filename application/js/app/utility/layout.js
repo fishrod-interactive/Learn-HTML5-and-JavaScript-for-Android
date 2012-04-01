@@ -1,8 +1,8 @@
 var app = app || {};
 
-app.utilities = app.utilities || {};
+app.utility = app.utility || {};
 
-app.utilities.layout = (function(){
+app.utility.layout = (function(){
 	
 	var fixdeckheight = function(){
 	
@@ -11,7 +11,6 @@ app.utilities.layout = (function(){
 		});
 		
 	};
-	
 	
 	fixdeckheight();	
 	

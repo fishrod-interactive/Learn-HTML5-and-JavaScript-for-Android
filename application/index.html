@@ -204,14 +204,36 @@
 		
 		</div>
 		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/app/utilities/layout.js"></script>
-		<script src="js/app/utilities/paging.js"></script>
+		<!-- Load all of the JavaScript dependencies -->
 		
+		<!-- Load the utility files -->
+		<script src="js/app/utility/layout.js"></script>
+		<script src="js/app/utility/paging.js"></script>
+
+		<!-- Load the custom types -->
+		<script src="js/app/type/location.js"></script>
+		<script src="js/app/type/format.js"></script>
+		
+		<!-- Load the models -->
+		<script src="js/app/model/actor.js"></script>
+		<script src="js/app/model/listing.js"></script>
+		<script src="js/app/model/movie.js"></script>
+		<script src="js/app/model/video.js"></script>
+		<script src="js/app/model/videosource.js"></script>
+		
+		<!-- Load the views -->
+		<script src="js/app/view/movies.js"></script>
+		
+		<!-- Load the controllers -->
+		<script src="js/app/controller/movies/add.js"></script>
 		<script src="js/app/controller/movies/search.js"></script>
+		<script src="js/app/controller/movies/view.js"></script>
 		
+		<!-- Bootstrap the application -->
 		<script src="js/app/bootstrap.js"></script>
-		
+		<script>
+			app.bootstrap.initScripts();
+		</script>
 	</body>
 
 </html>

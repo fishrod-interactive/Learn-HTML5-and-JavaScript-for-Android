@@ -1,8 +1,8 @@
 var app = app || {};
 
-app.utilities = app.utilities || {};
+app.utility = app.utility || {};
 
-app.utilities.paging = (function(){
+app.utility.paging = (function(){
 	
 	document.addEventListener("click", function(event){
 
