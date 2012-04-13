@@ -6,7 +6,7 @@ app.view = app.view || {};
  * Creates a new view based on the search results
  * @param {Array} results
  */
-app.view.searchresults = function(results){
+app.view.movielist = function(results){
 	
 	var _results = results,
 		_rootElement;
@@ -20,8 +20,8 @@ app.view.searchresults = function(results){
 	
 	for(var i = 0; i < results.length; i++){
 		var itemView = new app.view.movielistitem(results[i]);
-		_rootElement.appendChild(itemView);
-	}	
+		_rootElement.appendChild(itemView.render());
+	}
 	
 	this.render = function(){
 		return _rootElement;

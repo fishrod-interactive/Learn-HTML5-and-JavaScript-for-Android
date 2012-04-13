@@ -6,21 +6,19 @@ app.view = app.view || {};
  * @param {app.model.movielistitem} movie
  */
 app.view.movielistitem = function(movie){
-							<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="movie/view/10">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>
-
+	
 	var _movie = movie,
 		_rootElement = document.createElement('li');
+		_rootElement.innerHTML = [
+			'<a data-controller="movies" data-action="find" data-params="{&quot;id&quot;: &quot;', movie.getRtid() ,'&quot;}" class="more" href="movie/view/', movie.getRtid() ,'">',
+				'<div class="preview-image">',
+					'<img src="', movie.getPosterframe(), '" alt="', movie.getTitle(), '" height="82" />',
+				'</div>',
+				'<h2>', movie.getTitle(), '</h2>',
+				'<p>', movie.getSynopsis(), '</p>',
+			'</a>'
+		].join('');
 		
-	var _link = document.createElement('a');
-
 	this.render = function(){
 		return _rootElement;
 	}

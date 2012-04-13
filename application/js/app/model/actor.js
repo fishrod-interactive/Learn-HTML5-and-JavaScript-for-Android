@@ -6,25 +6,24 @@ app.model = app.model || {};
  * The actor class handles the actors for a movie.
  * Actors should only be included in a full movie listing
  * @param {String} name
- * @param {String} photo
  * @param {String} role
  */
-app.model.actor = function(name, photo, role){
+app.model.actor = function(name, role){
 	
 	/**
 	 * The actors instance variables
 	 */
 	var _name,
-		_photo,
 		_role,
 		_self = this;
 	
 	/**
 	 * Set the instance variables using the constructors arguments
 	 */
-	this.setName(name);
-	this.setPhoto(photo);
-	this.setRole(role);
+	this.init = function(){
+		this.setName(name);
+		this.setRole(role);
+	}
 	
 	/**
 	 * Getters and setters
@@ -45,23 +44,7 @@ app.model.actor = function(name, photo, role){
 	this.setName = function(name){
 		_name = name;
 	}
-	
-	/**
-	 * Gets the photo path/url of the actor
-	 * @return {String}
-	 */
-	this.getPhoto = function(){
-		return _photo;
-	}
-	
-	/**
-	 * Sets the photo path/url of the actor
-	 * @param {String} photo
-	 */
-	this.setPhoto = function(photo){
-		_photo = photo;
-	}
-	
+
 	/**
 	 * Gets the role of the actor in
 	 * relation to the associated film
@@ -79,5 +62,7 @@ app.model.actor = function(name, photo, role){
 	this.setRole = function(role){
 		_role = role;
 	}
+	
+	this.init();
 		
 }

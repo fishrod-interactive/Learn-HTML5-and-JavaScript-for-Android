@@ -8,26 +8,28 @@ app.model = app.model || {};
  * @alias app.model.movie
  * @constructor
  * @param {String} title
- * @param {String} imdbref
+ * @param {String} rtid
  * @param {String} posterframe
  * @param {String} synopsis
  */
-app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
+app.model.movie = function(title, rtid, posterframe, synopsis) {
 	
 	/**
 	 * The videos instance variables
 	 */
 	var _title,
 		_IMDBRef,
+		_rtid,
 		_posterframe,
 		_synopsis,
 		_releaseDates = {
 			cinema: null,
 			dvd: null
 		},
-		_listings = [],
 		_videos = [],
 		_actors = [],
+		_rating,
+		_favourite = false,
 		_self = this;
 
 	/**
@@ -39,7 +41,7 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 		 * Set the instance variables using the constructors arguments
 		 */
 		this.setTitle(title);
-		this.setIMDBRef(IMDBRef);
+		this.setRtid(rtid);
 		this.setPosterframe(posterframe);
 		this.setSynopsis(synopsis);
 	}
@@ -61,7 +63,7 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	}
 	
 	/**
-	 * Returns the IMDB database reference ID
+	 * Returns the IMDB reference ID
 	 * @return {String}
 	 */
 	this.getIMDBRef = function(){
@@ -69,11 +71,27 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	}
 	
 	/**
-	 * Sets the IMDB database reference ID
+	 * Sets the IMDB reference ID
 	 * @param {String} IMDBRef
 	 */
 	this.setIMDBRef = function(IMDBRef){
 		_IMDBRef = IMDBRef;
+	}
+	
+	/**
+	 * Returns the Rotten Tomatoes reference ID
+	 * @return {String}
+	 */
+	this.getRtid = function(){
+		return _rtid;
+	}
+	
+	/**
+	 * Sets the Rotten Tomatoes reference ID
+	 * @param {String} rtid
+	 */
+	this.setRtid = function(rtid){
+		_rtid = rtid;
 	}
 	
 	/**
@@ -97,6 +115,10 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	 * @return {String}
 	 */
 	this.getSynopsis = function(){
+		if(_synopsis == '' || _synopsis == null){
+			return "No Synopsis Available";
+		}
+		
 		return _synopsis;
 	}
 	
@@ -106,42 +128,6 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	 */
 	this.setSynopsis = function(synopsis){
 		_synopsis = synopsis;
-	}
-	
-	/**
-	 * Gets all listings associated with the movie
-	 * @return {Array}
-	 */
-	this.getListings = function(){
-		return _listings;
-	}
-	
-	/**
-	 * Sets all listings associated with a movie
-	 * @param {Array} listings
-	 */
-	this.setListings = function(listings){
-		/**
-		 * Rather than setting the listings all in one go
-		 * you use the addListing method which can handle
-		 * any validation for each listing before it's
-		 * added to the object
-		 */
-		for(var i = 0; i < listings.length; i++){
-			_self.addListing(listings[i]);
-		}
-	}
-	
-	/**
-	 * Adds a listing to the movie
-	 * @param {app.model.listing} listing
-	 */
-	this.addListing = function(listing){
-		/**
-		 * You can add any listing validation here
-		 * before it's added to the movie
-		 */
-		_listings.push(listing);
 	}
 	
 	/**
@@ -157,6 +143,9 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	 * @param {Array}
 	 */
 	this.setVideos = function(videos){
+		
+		_videos.length = 0;
+		
 		/**
 		 * Rather than setting the videos all in one go
 		 * you use the addVideo method which can handle
@@ -189,10 +178,22 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	}
 	
 	/**
+	 * Gets an actor at a specific index
+	 * @param {Integer} index
+	 * @return {app.model.actor}
+	 */
+	this.getActor = function(index){
+		return _actors[index];
+	}
+	
+	/**
 	 * Sets all actors associated with the movie
 	 * @param {Array}
 	 */
 	this.setActors = function(actors){
+		
+		_actors.length = 0;
+		
 		/**
 		 * Rather than setting the actors all in one go
 		 * you use the addActor method which can handle
@@ -254,6 +255,44 @@ app.model.movie = function(title, IMDBRef, posterframe, synopsis) {
 	 */
 	this.getReleaseDates = function(){
 		return _releaseDates;
+	}
+	
+	/**
+	 * Gets the movies rating
+	 * @return {String}
+	 */
+	this.getRating = function(){
+		return _rating;
+	}
+	
+	/**
+	 * Sets the movie rating
+	 * @param {String} rating
+	 */
+	this.setRating = function(rating){
+		_rating = rating;
+	}
+	
+	/**
+	 * Checks to see whether the movie
+	 * is in the users favourites list
+	 * @return {Bool}
+	 */
+	this.isFavourite = function(){
+		return _favourite;
+	}
+	
+	/**
+	 * Sets whether the movie is in the
+	 * users favourites list
+	 * @param {Bool} value
+	 */
+	this.setFavourite = function(value){
+		if(value === true){
+			_favourite = true;
+		} else {
+			_favourite = false;
+		}
 	}
 	
 	this.init();

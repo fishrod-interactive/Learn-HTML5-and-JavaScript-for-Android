@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; target-densitydpi=device-dpi;"/>
 		<title>Mo Memo</title>
 		<link rel="stylesheet" type="text/css" href="css/mobile.css?v=22" />
+		<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 		<link rel="apple-touch-icon-precomposed" href="img/home-screen-icon.png">
 	</head>	
 
@@ -16,11 +17,13 @@
 		
 			<!-- Begin Taskbar -->
 			
-			<header id="taskbar">
+			<header id="taskbar" class="screenbar">
 				<h1 class="branding">Mo Memo</h1>
+				<a href="#" class="clear-search" data-controller="movies" data-action="clearSearch">Clear</a>
 				<form method="post" id="add-movie" class="horizontal">
-					<input type="text" class="full-width" name="query" placeholder="enter your movie name&hellip;" />
+					<input type="text" class="full-width search" name="query" placeholder="enter your movie name&hellip;" />
 				</form>
+				
 			</header>
 			
 			<!-- End Taskbar -->
@@ -29,173 +32,16 @@
 		
 			<div class="deck">
 				
-				<div class="card active" id="card-movie_list">
+				<div class="card active" id="card-favourite_list">
 					
-					<ul class="list alternating medium video-list">
-						<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="movie/view/10">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>
-						<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="path/to/movie/">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>	
-						<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="path/to/movie/">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>
-						<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="path/to/movie/">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>	
-						<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="path/to/movie/">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>
-						<li>
-							<video class="teaser" poster="img/video.jpg" title="Movie Title">
-								<source type="video/webm" src="path/to/video.webm" />
-							</video>
-							<a data-method="push" class="more" href="path/to/movie/">
-								<h2>My Movie Title</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et dolor nisi, vel imperdiet tortor. Sed sollicitudin lectus justo. Morbi nec velit est, vitae pretium ante. Nullam vel massa massa. Ut erat ante, sollicitudin vitae convallis at, facilisis sit amet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec iaculis elementum tellus, eget vestibulum sem viverra in. Proin non tortor urna. Duis sodales tellus quis dolor viverra tempor. Nulla malesuada, massa quis ultrices pulvinar, risus odio vehicula est, quis mattis tortor neque at libero. Curabitur tristique sodales arcu ut auctor. Ut hendrerit, turpis eu consequat.</p>
-							</a>
-						</li>		
-					</ul>
+				</div>
+				
+				<div class="card" id="card-movie_search_results">
 					
 				</div>
 				
 				<div class="card" id="card-movie_info">
-					
-					<header>
-						
-						<img src="path/to/movie/photo.jpg" alt="Movie Title" />
-						<hgroup>
-							<h2>My Movie Title</h2>
-							<p>Released: Monday 10th March 2012</p>
-						</hgroup>
-						
-					</header>
-					
-					<section class="block" id="block-synopsis">
-						<div class="content">
-							<p>Hello world, this is my synopsis</p>
-						</div>
-					</section>
-										
-					<section class="block" id="block-cast">
-						<h3>Cast List</h3>
-						<div class="content">
-						<ul class="list scrolling medium">
-							<li>
-								<img src="path/to/actor/photo.jpg" alt="Actor Name" />
-								<p>Actor Name</p>
-							</li>					
-						</ul>
-						</div>
-					</section>
-					
-					<section class="block" id="block-video">
-						
-						<h3>Video Clips</h3>
-						
-						<div class="content">
-							<ul class="list grid">
-								
-								<li>
-									<video poster="path/to/posterframe.jpg" title="Clip Title">
-										<source type="video/webm" src="path/to/video.webm" />
-									</video>
-									<p>Clip name - 00:38</p>
-								</li>
-								
-							</ul>
-						</div>
-																	
-					</section>
-										
-					<section class="block" id="block-soundtrack">
-						
-						<h3>Soundtrack</h3>
-						
-						<div class="content">
-						
-							<table class="alternating">
-								
-								<thead>
-									<tr>
-										<th>&nbsp;</th>
-										<th>Title</th>
-										<th>Artist</th>
-									</tr>
-								</thead>
-								
-								<tbody>
-									<tr>
-										<td>
-											<canvas class="audio"></canvas>
-										</td>
-										<td>
-											A Ridiculously Long Track Title
-										</td>
-										<td>
-											Track Artist
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<canvas class="audio"></canvas>
-										</td>
-										<td>
-											A Ridiculously Long Track Title
-										</td>
-										<td>
-											Track Artist
-										</td>
-									</tr>
-								</tbody>
-								
-							</table>
 							
-						</div>
-						
-					</section>
-					
-				<section class="block" id="block-closest_cinemas">
-					
-					<h3>Closest Cinemas</h3>
-					
-					<div class="content">
-						<div class="map"></div>
-					</div>
-					
-				</section>
-					
 				</div>
 				
 			</div>
@@ -206,9 +52,13 @@
 		
 		<!-- Load all of the JavaScript dependencies -->
 		
+		<!-- Load any lib files -->
+		<script src="js/lib/eligrey/classlist.js"></script>
+		
 		<!-- Load the utility files -->
 		<script src="js/app/utility/layout.js"></script>
-		<script src="js/app/utility/paging.js"></script>
+		<script src="js/app/utility/deck.js"></script>
+		<script src="js/app/utility/jsonp.js"></script>
 
 		<!-- Load the custom types -->
 		<script src="js/app/type/location.js"></script>
@@ -216,18 +66,18 @@
 		
 		<!-- Load the models -->
 		<script src="js/app/model/actor.js"></script>
-		<script src="js/app/model/listing.js"></script>
 		<script src="js/app/model/movie.js"></script>
 		<script src="js/app/model/video.js"></script>
 		<script src="js/app/model/videosource.js"></script>
 		
 		<!-- Load the views -->
-		<script src="js/app/view/movies.js"></script>
+		<script src="js/app/view/movie.js"></script>
+		<script src="js/app/view/movielistitem.js"></script>
+		<script src="js/app/view/movielist.js"></script>
 		
 		<!-- Load the controllers -->
-		<script src="js/app/controller/movies/add.js"></script>
-		<script src="js/app/controller/movies/search.js"></script>
-		<script src="js/app/controller/movies/view.js"></script>
+		<script src="js/app/controller/movies.js"></script>
+		<script src="js/app/controller/favourites.js"></script>
 		
 		<!-- Bootstrap the application -->
 		<script src="js/app/bootstrap.js"></script>
