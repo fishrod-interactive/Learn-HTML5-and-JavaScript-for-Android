@@ -73,6 +73,7 @@ app.controller.movies = function(){
 	}
 	
 	this.clearSearch = function(){
+		clearTimeout(_searchTimeout);
 		_searchfield.value = '';
 		app.utility.deck.hideCard('card-movie_search_results');
 		

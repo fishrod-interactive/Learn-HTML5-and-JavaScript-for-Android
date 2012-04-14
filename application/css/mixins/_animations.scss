@@ -1,5 +1,5 @@
-@mixin animation ($properties) {
-	animation: $properties;
-	-moz-animation: $properties;
-	-webkit-animation: $properties;
+@mixin animation ($values) {
+	animation: $values;
+	-moz-animation: $values;
+	-webkit-animation: $values;
 }

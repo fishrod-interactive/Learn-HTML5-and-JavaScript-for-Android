@@ -9,7 +9,6 @@ body, html, #shoe, .deck {
 /**
  *   Animations for the poster header
  */
-
 @keyframes posteranimation {
   0% { top: 0%; }
   100% { top: -80%; }
@@ -76,50 +75,6 @@ body, html, #shoe, .deck {
   
 }
 
-.video-list {
-  
-  li {
-    
-    background: #A5CCEB;
-    border-bottom: 1px solid #FFFFFF;
-    
-    padding: 10px;
-    clear: both;
-    overflow: hidden;
-    height: 82px;
-    display: block;
-    
-    .teaser {
-      float: left;
-      margin: 0 10px 0 0;
-    }
-    
-    .more {
- 
-      display: block;
-      height: 100%;
-      overflow: hidden;
-      text-decoration: none;
-      
-      h2 {
-        margin: 0 0 10px;
-        color: #BF2628;
-      }
-      
-      p {
-        margin: 0;
-        color: #000000;
-      }
-      
-    }
-  }
-    
-  li:nth-child(odd) {
-    background: #97B2D9;
-  }
-  
-}
-
 /**
  *   Header taskbar styles
  */
@@ -131,8 +86,6 @@ body, html, #shoe, .deck {
 header#taskbar {
   color: #FFFFFF;
   overflow: hidden;
-  top: 0;
-  left: 0;
   padding: 10px;
   border-bottom: 1px solid #BF2628;
   
@@ -143,7 +96,7 @@ header#taskbar {
     height: 32px;
     text-indent: -10000px;
     overflow: hidden;
-    background: url('../img/momemo.png') no-repeat top left;
+    background: url('../img/lowres/momemo.png') no-repeat top left;
   }
   
   .clear-search {
@@ -267,3 +220,46 @@ header#taskbar.searchactive {
   height: 100%;
 }
 
+.video-list {
+  
+  li {
+    
+    background: #A5CCEB;
+    border-bottom: 1px solid #FFFFFF;
+    
+    padding: 10px;
+    clear: both;
+    overflow: hidden;
+    height: 82px;
+    display: block;
+    
+    .teaser {
+      float: left;
+      margin: 0 10px 0 0;
+    }
+    
+    .more {
+ 
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      text-decoration: none;
+      
+      h2 {
+        margin: 0 0 10px;
+        color: #BF2628;
+      }
+      
+      p {
+        margin: 0;
+        color: #000000;
+      }
+      
+    }
+  }
+    
+  li:nth-child(odd) {
+    background: #97B2D9;
+  }
+  
+}
