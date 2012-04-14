@@ -12,6 +12,13 @@ app.utility.layout = (function(){
 		
 	};
 	
+	var timeout;
+	
+	window.addEventListener('resize', function(){
+		clearTimeout(timeout);
+		timeout = setTimeout(function(){ fixdeckheight(); }, 100);
+	});
+	
 	fixdeckheight();	
 	
 })();

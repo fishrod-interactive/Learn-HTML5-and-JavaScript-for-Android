@@ -4,6 +4,8 @@ app.controller = app.controller || {};
 
 app.controller.favourites = function(){
 	
+	var _listScroll = null;
+	
 	this.add = function(data){
 		
 		var _movie = data;
@@ -51,6 +53,13 @@ app.controller.favourites = function(){
 		// Set the contents of the search results div
 		_favouriteslist.innerHTML = '';
 		_favouriteslist.appendChild(view.render());
+
+		if(_listScroll !== null){
+			_listScroll.destroy();
+			_listScroll = null;
+		}
+		
+		_listScroll = new iScroll(_favouriteslist);
 
 		app.utility.deck.hideAllCards();
 		app.utility.deck.showCard('card-favourite_list');

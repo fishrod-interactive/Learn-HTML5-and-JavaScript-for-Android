@@ -6,8 +6,118 @@ body, html, #shoe, .deck {
 }
 
 
+/**
+ *   Animations for the poster header
+ */
+
+@keyframes posteranimation {
+  0% { top: 0%; }
+  100% { top: -80%; }
+}
+
+@-moz-keyframes posteranimation {
+  0% { top: 0%; }
+  100% { top: -80%; }
+} 
+
+@-webkit-keyframes posteranimation {
+  0% { top: 0%; }
+  100% { top: -80%; }
+}
+
+/**
+ *  Individual Card Styles
+ */
+
 #card-movie_search_results {
   z-index: 50;
+}
+
+/**
+ *  Deck styles
+ */
+
+
+.deck {
+ 
+  position: relative;
+ 
+  .card {
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    position: absolute;
+  }
+  
+  .card.active {
+    left: 0px;
+  }
+
+}
+
+/**
+ *   List styles
+ */
+
+
+/** Standard list **/
+
+.list {
+  margin: 0;
+  padding: 0;
+  
+  .preview-image {
+    float: left;
+    width: 60px;
+    height: 82px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+}
+
+.video-list {
+  
+  li {
+    
+    background: #A5CCEB;
+    border-bottom: 1px solid #FFFFFF;
+    
+    padding: 10px;
+    clear: both;
+    overflow: hidden;
+    height: 82px;
+    display: block;
+    
+    .teaser {
+      float: left;
+      margin: 0 10px 0 0;
+    }
+    
+    .more {
+ 
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      text-decoration: none;
+      
+      h2 {
+        margin: 0 0 10px;
+        color: #BF2628;
+      }
+      
+      p {
+        margin: 0;
+        color: #000000;
+      }
+      
+    }
+  }
+    
+  li:nth-child(odd) {
+    background: #97B2D9;
+  }
+  
 }
 
 /**
@@ -61,56 +171,6 @@ header#taskbar.searchactive {
 }
 
 
-.deck {
- 
-  position: relative;
- 
-  .card {
-    height: inherit;
-    width: 100%;
-    left: -100%;
-    overflow: auto;
-    position: absolute;
-  }
-  
-  .card.active {
-    left: 0px;
-  }
-
-}
-
-.list {
-  margin: 0;
-  padding: 0;
-  
-  .preview-image {
-    float: left;
-    width: 60px;
-    height: 82px;
-    text-align: center;
-    margin-right: 10px;
-  }
-  
-}
-
-/**
- *   Animations for the poster header
- */
-@keyframes posteranimation {
-  0% { top: 0%; }
-  100% { top: -80%; }
-}
-
-@-moz-keyframes posteranimation {
-  0% { top: 0%; }
-  100% { top: -80%; }
-} 
-
-@-webkit-keyframes posteranimation {
-  0% { top: 0%; }
-  100% { top: -80%; }
-}
-
 .movie-header {
   
   position: relative;
@@ -154,19 +214,24 @@ header#taskbar.searchactive {
 }
 
 .movie-content {
-  height: 75%;
+  height: 80%;
   width: 100%;
-  overflow: auto;
-
+  padding-bottom: 40px;
+  @include box-sizing(border-box);
+  
   .block {
     width: 33%;
     float: left;
     height: 100%;
-    padding-bottom: 50px;
-    @include box-sizing(border-box);
     
     font-size: 1.3em;
     line-height: 2em;
+    
+    .content {
+      height: 100%;
+      overflow: hidden;
+      @include box-sizing(border-box);
+    }
     
     h3 {
       padding: 10px 10px 0 10px;
@@ -202,46 +267,3 @@ header#taskbar.searchactive {
   height: 100%;
 }
 
-.video-list {
-  
-  li {
-    
-    background: #A5CCEB;
-    border-bottom: 1px solid #FFFFFF;
-    
-    padding: 10px;
-    clear: both;
-    overflow: hidden;
-    height: 82px;
-    display: block;
-    
-    .teaser {
-      float: left;
-      margin: 0 10px 0 0;
-    }
-    
-    .more {
- 
-      display: block;
-      height: 100%;
-      overflow: hidden;
-      text-decoration: none;
-      
-      h2 {
-        margin: 0 0 10px;
-        color: #BF2628;
-      }
-      
-      p {
-        margin: 0;
-        color: #000000;
-      }
-      
-    }
-  }
-    
-  li:nth-child(odd) {
-    background: #97B2D9;
-  }
-  
-}

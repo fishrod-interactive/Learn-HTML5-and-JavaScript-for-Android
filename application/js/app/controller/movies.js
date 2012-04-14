@@ -6,8 +6,11 @@ app.controller.movies = function(){
 	
 	var _self = this,
 		_searchfield = document.querySelector('#add-movie input[name="query"]'),
+		_searchform = document.getElementById('add-movie'),
 		_searchresultscard = document.getElementById('card-movie_search_results'),
-		_searchTimeout;
+		_searchTimeout,
+		_viewScrolls = [],
+		_searchScroll = null;
 	
 	/**
 	 * This contains all initialization code
@@ -23,6 +26,19 @@ app.controller.movies = function(){
 			if(this.value.length > 0){
 				app.utility.deck.showCard('card-movie_search_results');
 			}
+		});
+		
+		_searchform.addEventListener('submit', function(e){
+			
+			e.preventDefault();
+			clearTimeout(_searchTimeout);
+			
+			var value = _searchfield.value;
+			
+			if(value.length > 0){			
+				_self.search(value);
+			}
+			
 		});
 	
 		_searchfield.addEventListener('input', function(){
@@ -127,6 +143,24 @@ app.controller.movies = function(){
 		
 		var view = new app.view.movie(movie);
 		viewcard.innerHTML = view.render().innerHTML;
+				
+		_viewScrolls.push(new iScroll(viewcard.querySelector('.movie-content'), {vScroll: false, vScrollbar: false}));
+		
+		[].forEach.call(viewcard.getElementsByClassName('content'), function(el){
+			
+			_viewScrolls.push(new iScroll(el, {hScroll: false, hScrollbar: false}));
+			
+		});
+		
+		window.addEventListener('resize', function(){
+			setTimeout(function(){
+				
+				for(var i = 0; i < _scrolls.length; i++){
+					_scrolls[i].refresh();	
+				}
+				
+			}, 100);
+		});
 		
 		app.utility.deck.hideAllCards();
 		app.utility.deck.showCard('card-movie_info');
@@ -178,6 +212,15 @@ app.controller.movies = function(){
 		_searchresultscard.classList.add('active'); // Controlling pages needs to be handled by it's own utility or class
 		_searchfield.classList.remove('loading');
 		results = null;
+		
+		
+		if(_searchScroll !== null){
+			_searchScroll.destroy();
+			_searchScroll = null;
+		}
+		
+		_searchScroll = new iScroll(_searchresultscard);
+		
 	}
 	
 	// Any initialization should go here

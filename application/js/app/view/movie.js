@@ -28,15 +28,15 @@ app.view.movie = function(movie){
 					'</section>',
 					
 					'<section class="block" id="block-cast">',
-						'<h3>Cast List</h3>',
 						'<div class="content">',
+							'<h3>Cast List</h3>',
 							'<ul class="list scrolling medium"></ul>',
 						'</div>',
 					'</section>',
 					
 					'<section class="block" id="block-video">',
-						'<h3>Video Clips</h3>',
 						'<div class="content">',
+							'<h3>Video Clips</h3>',
 							'<ul class="list grid"></ul>',
 						'</div>',
 					'</section>',
