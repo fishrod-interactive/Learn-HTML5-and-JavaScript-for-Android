@@ -12,20 +12,16 @@ app.model = app.model || {};
  * @param {String} posterframe
  * @param {String} synopsis
  */
-app.model.movie = function(title, rtid, posterframe, synopsis) {
+app.model.movie = function appModelMovie(title, rtid, posterframe, synopsis) {
 	
 	/**
 	 * The videos instance variables
 	 */
 	var _title,
-		_IMDBRef,
 		_rtid,
 		_posterframe,
 		_synopsis,
-		_releaseDates = {
-			cinema: null,
-			dvd: null
-		},
+		_releaseDate,
 		_videos = [],
 		_actors = [],
 		_rating,
@@ -60,22 +56,6 @@ app.model.movie = function(title, rtid, posterframe, synopsis) {
 	 */
 	this.setTitle = function(title){
 		_title = title;
-	}
-	
-	/**
-	 * Returns the IMDB reference ID
-	 * @return {String}
-	 */
-	this.getIMDBRef = function(){
-		return _IMDBRef;
-	}
-	
-	/**
-	 * Sets the IMDB reference ID
-	 * @param {String} IMDBRef
-	 */
-	this.setIMDBRef = function(IMDBRef){
-		_IMDBRef = IMDBRef;
 	}
 	
 	/**
@@ -114,11 +94,7 @@ app.model.movie = function(title, rtid, posterframe, synopsis) {
 	 * Gets the synopsis as a string with no HTML formatting
 	 * @return {String}
 	 */
-	this.getSynopsis = function(){
-		if(_synopsis == '' || _synopsis == null){
-			return "No Synopsis Available";
-		}
-		
+	this.getSynopsis = function(){		
 		return _synopsis;
 	}
 	
@@ -127,7 +103,13 @@ app.model.movie = function(title, rtid, posterframe, synopsis) {
 	 * @param {String} synopsis
 	 */
 	this.setSynopsis = function(synopsis){
-		_synopsis = synopsis;
+		
+		if(app.utility.validator.isEmpty(synopsis)){
+			_synopsis = null;
+		} else {
+			_synopsis = synopsis;
+		}
+		
 	}
 	
 	/**
@@ -218,43 +200,18 @@ app.model.movie = function(title, rtid, posterframe, synopsis) {
 	}
 	
 	/**
-	 * Gets the cinema release date
-	 * @return {Date}
+	 * Sets the release date
 	 */
-	this.getCinemaReleaseDate = function(){
-		return _releaseDates.cinema;
+	this.setReleaseDate = function(releaseDate){
+		_releaseDate = releaseDate;
 	}
 	
 	/**
-	 * Sets the cinema release date
-	 * @param {Date} date
+	 * Gets the release date
+	 * @return {app.type.releaseDate}
 	 */
-	this.setCinemaReleaseDate = function(date){
-		_releaseDates.cinema = date;
-	}
-	
-	/**
-	 * Gets the DVD release date
-	 * @return {Date}
-	 */
-	this.getDVDReleaseDate = function(){
-		return _releaseDates.dvd;
-	}
-	
-	/**
-	 * Sets the DVD release date
-	 * @param {Date} date
-	 */
-	this.setDVDReleaseDate = function(date){
-		_releaseDates.dvd = date;
-	}
-	
-	/**
-	 * Gets all release dates
-	 * @return {_releaseDates}
-	 */
-	this.getReleaseDates = function(){
-		return _releaseDates;
+	this.getReleaseDate = function(){
+		return _releaseDate;
 	}
 	
 	/**

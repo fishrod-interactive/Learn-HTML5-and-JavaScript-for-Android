@@ -14,9 +14,7 @@ app.view.movielist = function(results){
 	// Create the root UL element
 	_rootElement = document.createElement('ul');
 	_rootElement.classList.add('list');
-	_rootElement.classList.add('alternating');
-	_rootElement.classList.add('medium');
-	_rootElement.classList.add('video-list');
+	_rootElement.classList.add('movie-list');
 	
 	for(var i = 0; i < results.length; i++){
 		var itemView = new app.view.movielistitem(results[i]);

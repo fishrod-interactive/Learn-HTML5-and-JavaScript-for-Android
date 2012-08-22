@@ -19,13 +19,15 @@ app.type.format = function(name, format, mime){
 		_format,
 		_mime,
 		_self = this;
-		
-	/**
-	 * Set the instance variables using the constructors arguments
-	 */
-	this.setName(name);
-	this.setFormat(format);
-	this.setMime(mime);
+	
+	this.init = function(){
+		/**
+		 * Set the instance variables using the constructors arguments
+		 */
+		this.setName(name);
+		this.setFormat(format);
+		this.setMime(mime);
+	}
 	
 	/**
 	 * Getters and setters
@@ -78,5 +80,7 @@ app.type.format = function(name, format, mime){
 	this.setMime = function(mime){
 		_mime = mime;
 	}
+	
+	this.init();
 	
 }

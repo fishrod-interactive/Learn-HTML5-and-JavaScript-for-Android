@@ -8,20 +8,24 @@ app.model = app.model || {};
  * @param {String} url
  * @param {app.type.format} format
  */
-app.model.videosource = function(url, format){
+app.model.videosource = function appModelVideoSource(url, format){
 	
 	/**
 	 * The video sources instance variables
 	 */
 	var _url,
-		_format;
+		_format,
+		_self = this,
+		validator = app.utility.validator;
 	
 	
 	/**
 	 * Set the instance variables using the constructors arguments
 	 */
-	this.setUrl(url);
-	this.setFormat(format);
+	this.init = function(){
+		this.setUrl(url);
+		this.setFormat(format);
+	}
 	
 	/**
 	 * Getters and setters
@@ -40,7 +44,16 @@ app.model.videosource = function(url, format){
 	 * @param {String} url
 	 */
 	this.setUrl = function(url){
-		_url = url;
+		
+		if(!validator.isTypeOf(url, "string")){
+			throw {
+				message: "The url property in the videosource model requires a 'string' type",
+				type: "validation_exception"
+			}
+			return;
+		}
+		
+ 		_url = url;
 	}
 	
 	/**
@@ -56,7 +69,18 @@ app.model.videosource = function(url, format){
 	 * @param {app.type.format} format
 	 */
 	this.setFormat = function(format){
+		
+		if(!validator.isTypeOf(format, app.type.format)){
+			throw {
+				message: "The format property in the videosource model requires a 'app.type.format' type",
+				type: "validation_exception"
+			}
+			return;
+		}
+		
 		_format = format;
 	}
+	
+	this.init();
 	
 }

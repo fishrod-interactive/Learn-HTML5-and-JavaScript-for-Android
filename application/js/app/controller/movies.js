@@ -12,25 +12,37 @@ app.controller.movies = function(){
 		_viewScrolls = [],
 		_searchScroll = null;
 	
+	this.init = function(){
+		// Any initialization should go here
+		this.bindSearchForm();
+	}
+	
 	/**
-	 * This contains all initialization code
+	 * Binds the search form
 	 */
 	this.bindSearchForm = function(){
 		
 		/**
-		 * Here you add an event listener to the search fied using
-		 * the textInput event listener
+		 * Here you add an event listener to the search filed using
+		 * the focus event listener, if there's a value, then show the
+		 * results.
 		 */
-		
 		_searchfield.addEventListener('focus', function(){
 			if(this.value.length > 0){
 				app.utility.deck.showCard('card-movie_search_results');
 			}
 		});
 		
+		/**
+		 * Add an event listener to the submission of the form
+		 * this will prevent the form from being submitted
+		 * and sent to another page, instead we capture the
+		 * event and trigger the search action
+		 */
 		_searchform.addEventListener('submit', function(e){
 			
 			e.preventDefault();
+			
 			clearTimeout(_searchTimeout);
 			
 			var value = _searchfield.value;
@@ -95,7 +107,7 @@ app.controller.movies = function(){
 	
 	this.view = function(rtresult){
 		
-		if(typeof rtresult !== 'object'){
+		if(!app.utility.validator.isTypeOf(rtresult, "object")){
 			return;
 		}
 		
@@ -103,18 +115,10 @@ app.controller.movies = function(){
 			viewcard = document.getElementById('card-movie_info');
 		
 		/**
-		 * The Rotten Tomatoes API sometimes doesn't return an IMDB
-		 * reference, so check to see whether it exists first
-		 */
-		if(rtresult.alternate_ids && rtresult.alternate_ids.imdb){
-			movie.setIMDBRef(rtresult.alternate_ids.imdb);
-		}
-		
-		/**
 		 * Set the DVD and cinema release dates
 		 */
-		movie.setCinemaReleaseDate(new Date(rtresult.release_dates.theater));
-		movie.setDVDReleaseDate(new Date(rtresult.release_dates.dvd));
+		var releaseDate = new app.type.releaseDate(new Date(rtresult.release_dates.theater), new Date(rtresult.release_dates.dvd));
+		movie.setReleaseDate(releaseDate);
 		
 		/**
 		 * Set the movies rating
@@ -156,8 +160,10 @@ app.controller.movies = function(){
 		window.addEventListener('resize', function(){
 			setTimeout(function(){
 				
+				_searchScroll.refresh();
+				
 				for(var i = 0; i < _scrolls.length; i++){
-					_scrolls[i].refresh();	
+					_viewScrolls[i].refresh();	
 				}
 				
 			}, 100);
@@ -170,9 +176,24 @@ app.controller.movies = function(){
 	
 	this.search = function(query){
 	
+		// Check to see whether the query length is longer than 0 characters
 		if(query.length > 0){
+			/*
+			 * Encode the query so that it can be passed
+			 * through the URL
+			 */ 
+			query = encodeURIComponent(query);
+			/**
+			 * Create a new JSONP request
+			 */
 			var jsonp = new app.utility.jsonp('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=57t3sa6sp5zz5394btptp9ew&q=' + query, 'app.bootstrap.getController("movies").showSearchResults');
+			/**
+			 * Send the request
+			 */
 			jsonp.send();
+			/**
+			 * Add the loading class to the search field
+			 */
 			_searchfield.classList.add('loading');
 		}
 
@@ -224,8 +245,6 @@ app.controller.movies = function(){
 		
 	}
 	
-	// Any initialization should go here
-	
-	this.bindSearchForm();
+	this.init();
 	
 }

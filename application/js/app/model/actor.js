@@ -8,7 +8,7 @@ app.model = app.model || {};
  * @param {String} name
  * @param {String} role
  */
-app.model.actor = function(name, role){
+app.model.actor = function appModelActor(name, role){
 	
 	/**
 	 * The actors instance variables

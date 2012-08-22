@@ -14,12 +14,12 @@ app.view.movie = function(movie){
 				'<hgroup class="movie-title">',
 					'<a href="#" class="btn-favourite add" data-controller="favourites" data-action="add" data-params=\'{"id": "', movie.getRtid() ,'", "title": "', escape(movie.getTitle()) ,'", "synopsis": "', escape(movie.getSynopsis()) ,'", "posterframe": "', movie.getPosterframe() ,'"}\'>favourite</a>',
 					'<h2>', movie.getTitle(),'</h2>',
-					'<p class="movie-release-date">Cinematic Release - ', movie.getCinemaReleaseDate().getDate(), '/',  movie.getCinemaReleaseDate().getMonth() + 1 , '/',  movie.getCinemaReleaseDate().getFullYear() ,'</p>',
+					'<p class="movie-release-date">Cinematic Release - ', movie.getReleaseDate().getCinema().getDate(), '/',  movie.getReleaseDate().getCinema().getMonth() + 1 , '/',  movie.getReleaseDate().getCinema().getFullYear() ,'</p>',
 				'</hgroup>',
 			'</header>',
 			
 			'<div class="movie-content">',
-				'<div class="block-container span-three">',
+				'<div class="block-container">',
 				
 					'<section class="block" id="block-synopsis">',
 						'<div class="content">',
@@ -43,7 +43,7 @@ app.view.movie = function(movie){
 				'</div>',
 			'</div>',
 			
-			'<footer class="movie-footer screenbar">',
+			'<footer class="footer screenbar">',
 				'<a class="back" href="/" data-controller="favourites" data-action="list">my favourites</a>',
 			'</footer>'
 					
@@ -55,7 +55,7 @@ app.view.movie = function(movie){
 			_favouriteButton.setAttribute('data-action', 'remove');
 			_favouriteButton.classList.remove('add');
 			_favouriteButton.classList.add('remove');
-			_favouriteButton.innerText = 'un-favourite';
+			_favouriteButton.textContent = 'un-favourite';
 		}
 		
 		for(var i = 0; i < movie.getActors().length; i++){

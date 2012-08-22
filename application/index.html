@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-GB" dir="ltr">
+<html lang="en-GB" dir="ltr" manifest="momemo.appcache">
 
 	<head>
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0; target-densitydpi=device-dpi;"/>
 		<title>Mo Memo</title>
-		<link rel="stylesheet" type="text/css" href="css/mobile.css?v=22" />
+		<link rel="stylesheet" type="text/css" href="css/mobile.min.css" />
 		<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 		<link rel="apple-touch-icon-precomposed" href="img/home-screen-icon.png">
 	</head>	
@@ -50,38 +50,8 @@
 		
 		</div>
 		
-		<!-- Load all of the JavaScript dependencies -->
-		
-		<!-- Load any lib files -->
-		<script src="js/lib/eligrey/classlist.js"></script>
-		<script src="js/lib/cubiq/iscroll.js"></script>
-		
-		<!-- Load the utility files -->
-		<script src="js/app/utility/layout.js"></script>
-		<script src="js/app/utility/deck.js"></script>
-		<script src="js/app/utility/jsonp.js"></script>
-
-		<!-- Load the custom types -->
-		<script src="js/app/type/location.js"></script>
-		<script src="js/app/type/format.js"></script>
-		
-		<!-- Load the models -->
-		<script src="js/app/model/actor.js"></script>
-		<script src="js/app/model/movie.js"></script>
-		<script src="js/app/model/video.js"></script>
-		<script src="js/app/model/videosource.js"></script>
-		
-		<!-- Load the views -->
-		<script src="js/app/view/movie.js"></script>
-		<script src="js/app/view/movielistitem.js"></script>
-		<script src="js/app/view/movielist.js"></script>
-		
-		<!-- Load the controllers -->
-		<script src="js/app/controller/movies.js"></script>
-		<script src="js/app/controller/favourites.js"></script>
-		
-		<!-- Bootstrap the application -->
-		<script src="js/app/bootstrap.js"></script>
+		<!-- Load the applications JavaScript -->
+		<script src="js/app.dev.js"></script>
 		<script>
 			app.bootstrap.initScripts();
 		</script>

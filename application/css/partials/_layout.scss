@@ -5,25 +5,6 @@ body, html, #shoe, .deck {
   margin: 0px;
 }
 
-
-/**
- *   Animations for the poster header
- */
-@keyframes posteranimation {
-  0% { top: 0%; }
-  100% { top: -80%; }
-}
-
-@-moz-keyframes posteranimation {
-  0% { top: 0%; }
-  100% { top: -80%; }
-} 
-
-@-webkit-keyframes posteranimation {
-  0% { top: 0%; }
-  100% { top: -80%; }
-}
-
 /**
  *  Individual Card Styles
  */
@@ -59,21 +40,74 @@ body, html, #shoe, .deck {
  */
 
 
-/** Standard list **/
+/**
+ *   Standard list
+ */
 
 .list {
+  
   margin: 0;
   padding: 0;
   
-  .preview-image {
-    float: left;
-    width: 60px;
+  li {
+     
+    padding: 10px;
+    overflow: hidden;
     height: 82px;
-    text-align: center;
-    margin-right: 10px;
+    display: block;
+    border-bottom: 1px solid #CCCCCC;
+    background: #FFFFFF;
+    
+    .preview-image {
+      float: left;
+      width: 60px;
+      height: 82px;
+      text-align: center;
+      margin-right: 10px;
+    }
+  
   }
   
 }
+
+/**
+ *   Movie list
+ */
+
+.movie-list {
+  
+  li {
+    
+    background: #A5CCEB;
+    border-bottom-color: #FFFFFF;
+
+    .more {
+ 
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      text-decoration: none;
+      
+      h2 {
+        margin: 0 0 10px;
+        color: #BF2628;
+      }
+      
+      p {
+        margin: 0;
+        color: #000000;
+      }
+      
+    }
+    
+  }
+    
+  li:nth-child(odd) {
+    background: #97B2D9;
+  }
+  
+}
+
 
 /**
  *   Header taskbar styles
@@ -123,6 +157,30 @@ header#taskbar.searchactive {
   
 }
 
+/**
+ *   Movie view
+ */
+
+
+/**
+ *   Animations for the poster header
+ */
+@keyframes posteranimation {
+  0% { top: 0%; }
+  100% { top: -80%; }
+}
+
+@-moz-keyframes posteranimation {
+  0% { top: 0%; }
+  100% { top: -80%; }
+} 
+
+@-webkit-keyframes posteranimation {
+  0% { top: 0%; }
+  100% { top: -80%; }
+}
+
+
 
 .movie-header {
   
@@ -157,11 +215,12 @@ header#taskbar.searchactive {
       border: 1px solid #A5CCEB;
     }
     
-  }
+    .movie-release-date {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
   
-  .movie-release-date {
-    text-transform: uppercase;
-    font-weight: bold;
+    
   }
   
 }
@@ -172,33 +231,41 @@ header#taskbar.searchactive {
   padding-bottom: 40px;
   @include box-sizing(border-box);
   
-  .block {
-    width: 33%;
-    float: left;
+  $blockWidth: 33%;
+  $blocks: 3;
+  
+  .block-container {
+  
+    width: (100% * $blocks) - (100% - 33%);
     height: 100%;
-    
-    font-size: 1.3em;
-    line-height: 2em;
-    
-    .content {
+  
+    .block {
+      width: $blockWidth;
+      float: left;
       height: 100%;
-      overflow: hidden;
-      @include box-sizing(border-box);
+      
+      font-size: 1.3em;
+      line-height: 2em;
+      
+      .content {
+        @include box-sizing(border-box);
+      }
+      
+      h3 {
+        padding: 10px 10px 0 10px;
+      }
+      
+      .content {
+        padding: 10px;
+      }
+      
     }
-    
-    h3 {
-      padding: 10px 10px 0 10px;
-    }
-    
-    .content {
-      padding: 10px;
-    }
-    
+  
   }
   
 }
 
-.movie-footer {
+.footer {
   height: 40px;
   width: 100%;
   text-align: center;
@@ -210,56 +277,6 @@ header#taskbar.searchactive {
     display: block;
     background: url('../img/back.png') no-repeat 10px 50%;
     text-indent: -10000px;
-  }
-  
-}
-
-
-.block-container.span-three {
-  width: 280%;
-  height: 100%;
-}
-
-.video-list {
-  
-  li {
-    
-    background: #A5CCEB;
-    border-bottom: 1px solid #FFFFFF;
-    
-    padding: 10px;
-    clear: both;
-    overflow: hidden;
-    height: 82px;
-    display: block;
-    
-    .teaser {
-      float: left;
-      margin: 0 10px 0 0;
-    }
-    
-    .more {
- 
-      display: block;
-      height: 100%;
-      overflow: hidden;
-      text-decoration: none;
-      
-      h2 {
-        margin: 0 0 10px;
-        color: #BF2628;
-      }
-      
-      p {
-        margin: 0;
-        color: #000000;
-      }
-      
-    }
-  }
-    
-  li:nth-child(odd) {
-    background: #97B2D9;
   }
   
 }
